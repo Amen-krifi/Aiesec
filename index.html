@@ -45,7 +45,18 @@
         .tech-border:hover::before, .tech-border:hover::after { width: 100%; height: 100%; opacity: 0.8; box-shadow: 0 0 20px #d946ef, inset 0 0 10px rgba(168, 85, 247, 0.5); }
         .glass-panel { background: rgba(15, 5, 25, 0.75); backdrop-filter: blur(16px); border: 1px solid rgba(168, 85, 247, 0.3); box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
         
-        .fullscreen-overlay { position: fixed; inset: 0; z-index: 9999; background: #050a14; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.8s ease-out, visibility 0.8s; padding: 2rem; }
+        /* FULLSCREEN OVERLAY - UPDATED FOR SCROLLING */
+        .fullscreen-overlay { 
+            position: fixed; inset: 0; z-index: 9999; 
+            background: #050a14; 
+            display: flex; flex-direction: column; 
+            align-items: center; 
+            /* Changed to allow scrolling on small screens */
+            justify-content: center; 
+            overflow-y: auto; 
+            transition: opacity 0.8s ease-out, visibility 0.8s; 
+            padding: 1rem;
+        }
         
         /* Cursor */
         .cursor { display: inline-block; width: 10px; height: 1.2em; background-color: #d946ef; vertical-align: bottom; animation: blink 1s step-end infinite; margin-left: 4px; }
@@ -71,20 +82,20 @@
             </div>
         </div>
 
-        <div id="intro-content" class="w-full max-w-6xl h-full flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 opacity-0 transition-opacity duration-500">
+        <div id="intro-content" class="w-full max-w-6xl min-h-min py-10 flex flex-col md:flex-row items-center justify-center gap-4 md:gap-16 opacity-0 transition-opacity duration-500">
             
-            <div id="intro-hero-img" class="w-64 md:w-[400px] flex-shrink-0 transition-all duration-1000 ease-out transform -translate-x-[200%] opacity-0">
+            <div id="intro-hero-img" class="w-32 md:w-[400px] flex-shrink-0 transition-all duration-1000 ease-out transform -translate-x-[200%] opacity-0">
                 <img src="black-widow.png" alt="Black Widow" class="w-full h-auto drop-shadow-[0_0_30px_rgba(168,85,247,0.4)]">
             </div>
 
-            <div class="max-w-2xl text-center md:text-left space-y-8 relative z-10">
-                <div class="min-h-[180px] md:min-h-[150px] bg-black/40 p-6 border-l-2 border-cosmic-primary/50 backdrop-blur-sm rounded-r-lg">
+            <div class="max-w-2xl text-center md:text-left space-y-4 md:space-y-8 relative z-10 w-full px-4">
+                <div class="min-h-[150px] md:min-h-[150px] bg-black/40 p-4 md:p-6 border-l-2 border-cosmic-primary/50 backdrop-blur-sm rounded-r-lg">
                     <p id="typing-text-intro" class="font-hud text-lg md:text-2xl text-white leading-relaxed tracking-wide font-bold text-shadow-glow"></p>
                     <span id="cursor-intro" class="cursor hidden"></span>
                 </div>
 
-                <div id="btn-enter-container" class="hidden pt-4">
-                    <button id="btn-enter" class="group relative px-10 py-4 bg-transparent border-2 border-cosmic-primary text-cosmic-primary font-hud tracking-[0.2em] text-lg uppercase hover:bg-cosmic-primary hover:text-white transition-all duration-300 shadow-[0_0_15px_#a855f7]">
+                <div id="btn-enter-container" class="hidden pt-4 pb-8">
+                    <button id="btn-enter" class="group relative px-8 py-3 md:px-10 md:py-4 bg-transparent border-2 border-cosmic-primary text-cosmic-primary font-hud tracking-[0.2em] text-sm md:text-lg uppercase hover:bg-cosmic-primary hover:text-white transition-all duration-300 shadow-[0_0_15px_#a855f7]">
                         STEP INTO YOUR LEGACY
                         <div class="absolute inset-0 bg-cosmic-bright opacity-0 group-hover:opacity-20 blur-lg transition-opacity"></div>
                     </button>
@@ -95,16 +106,16 @@
 
     <div id="success-overlay" class="fullscreen-overlay opacity-0 invisible" style="background: rgba(5, 10, 20, 0.95); backdrop-filter: blur(10px);">
         
-        <div id="success-content" class="w-full max-w-6xl flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
+        <div id="success-content" class="w-full max-w-6xl flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 py-10">
             
-            <div id="success-hero-img" class="w-64 md:w-[400px] flex-shrink-0 transition-all duration-1000 ease-out transform -translate-x-[200%] opacity-0">
+            <div id="success-hero-img" class="w-32 md:w-[400px] flex-shrink-0 transition-all duration-1000 ease-out transform -translate-x-[200%] opacity-0">
                 <img src="black-widow.png" alt="Black Widow" class="w-full h-auto drop-shadow-[0_0_30px_rgba(255,255,255,0.4)]">
             </div>
 
-            <div class="max-w-3xl w-full text-center md:text-left space-y-8 border border-cosmic-primary/40 p-6 md:p-12 rounded-lg shadow-glow-purple bg-black/60 backdrop-blur-md relative z-10">
+            <div class="max-w-3xl w-full text-center md:text-left space-y-8 border border-cosmic-primary/40 p-6 md:p-12 rounded-lg shadow-glow-purple bg-black/60 backdrop-blur-md relative z-10 mx-4">
                 
                 <h2 class="font-hud text-3xl md:text-6xl tracking-tighter uppercase animate-pulse leading-tight">
-                    <span class="text-stark-red drop-shadow-[0_0_15px_#8B0000]">BETTER LUCK</span> 
+                    <span class="text-stark-red drop-shadow-[0_0_15px_#8B0000]">WELCOME</span> 
                     <span class="text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.6)]">LEGACY MAKER</span>
                 </h2>
 
@@ -159,8 +170,8 @@
                 <div class="p-0 md:p-8 bg-black/20 min-h-[500px] flex justify-center relative z-20">
                     <div class="w-full">
                          <div class="border border-dashed border-cosmic-primary/50 p-12 text-center rounded bg-cosmic-dim/20 shadow-[inset_0_0_20px_rgba(168,85,247,0.1)] m-4 md:m-0">
-                            <h2 class="text-2xl font-hud text-cosmic-bright mb-2 tracking-wider">DATA STREAM WAITING...</h2>
-                            <p><iframe data-tally-src="https://tally.so/embed/ob28PM?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="1313" frameborder="0" marginheight="0" marginwidth="0" title="Application Form"></iframe>
+                            <h2 class="text-2xl font-hud text-cosmic-bright mb-2 tracking-wider"></h2>
+                            <p class="text-purple-300"><iframe data-tally-src="https://tally.so/embed/ob28PM?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="1313" frameborder="0" marginheight="0" marginwidth="0" title="Application Form"></iframe>
 <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script></p>
                          </div>
                     </div>
@@ -199,6 +210,7 @@
                     <svg id="icon-play" class="w-4 h-4 text-cosmic-primary group-hover:text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                     <svg id="icon-pause" class="w-4 h-4 text-cosmic-bright group-hover:text-white hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
                 </button>
+                
                 <div class="flex flex-col justify-center">
                      <button id="mute-toggle" class="text-[10px] font-hud text-cosmic-primary tracking-widest uppercase hover:text-white transition-colors border border-cosmic-dim px-2 py-1 rounded">
                         SOUND: <span id="sound-status" class="text-cosmic-bright font-bold">OFF</span>
@@ -210,11 +222,10 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // TEXT CONTENT
             const introText = "Welcome back to the AIESEC Bardo journey.\nYou’ve taken your first step! and that already sets you apart.\nThis is the second stage of your path, where curiosity turns into commitment and potential starts becoming action.\nThe journey continues, and it’s getting serious now.";
-            const successText = "You’ve made it this far — but this is just the start.\nThe next step will determine who will shine, \nStay focused. The journey continues.";
+            const successText = "You’ve earned your place here.\nBut this is only the beginning.\nThe next stage will separate the good from the great.\nOnly a few will remain.\nStay ready, your rise is coming!";
 
-            // ELEMENTS
+            // Elements
             const introContent = document.getElementById('intro-content');
             const introContainer = document.getElementById('typing-text-intro');
             const introCursor = document.getElementById('cursor-intro');
@@ -240,8 +251,9 @@
 
             let isMuted = true;
 
-            // --- INTRO SEQUENCE ---
+            // --- START SEQUENCE ---
             function startSequence(enableSound) {
+                // Hide Choice Buttons
                 btnChoiceContainer.style.display = 'none';
                 introContent.classList.remove('opacity-0');
                 
